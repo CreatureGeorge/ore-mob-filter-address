@@ -37,7 +37,7 @@ export default function AddressSearchBar({ placeholder, setAddress }) {
         placeholder={placeholder}
         onKeyDown={handleKeyDown}
         className={`h-7 p-5 rounded-lg border-2 bg-gray-500 first-letter 
-        w-[90vw] md:w-[50vw] outline-none duration-300 
+        w-[90vw] lg:w-[50vw] outline-none duration-300 
         shadow-[22px_22px_40px_4px_rgba(255,255,255,0.3)] 
         text-base tracking-widest font-thin text-white-90
         ${!invalid ? "placeholder-white-50 border-chinese-black-50" : "placeholder-red-500 border-red-600"} 
