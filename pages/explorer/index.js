@@ -67,10 +67,7 @@ export default function Explorer({ _address, _showntokens, _filters, _options })
 
   const [invalid, setInvalid] = useState(false)
 
-  console.log(shownTokens)
-
   const getMoreTokens = async () => {
-    console.log(`get more`)
     const newTokens = filteredTokens.slice(shownTokens.length, shownTokens.length + 13)
     setShownTokens((shownTokens) => [...shownTokens, ...newTokens])
   }
