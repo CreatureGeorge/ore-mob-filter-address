@@ -6,8 +6,6 @@ const policyID = `062b1da3d344c1e6208ef908b2d308201e7ff6bcfddf0f606249817f`
 export default function handler(req, res) {
   const address = req.query.id
 
-  console.log(address)
-
   let holdersArray = {}
 
   _holders["owners"].map(holder => {

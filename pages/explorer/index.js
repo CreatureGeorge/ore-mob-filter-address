@@ -11,6 +11,7 @@ import closeImg from "../../public/images/icons/close.png"
 
 import Card from "../../components/token/Card";
 import Filters from "../../components/filters/Filters";
+import Modal from "../../components/token/Modal";
 
 const policyID = `062b1da3d344c1e6208ef908b2d308201e7ff6bcfddf0f606249817f`
 
@@ -64,8 +65,7 @@ export default function Explorer({ _address, _showntokens, _filters, _options })
 
   const [hasMore, setHasMore] = useState(true)
   const [showModal, setShowModal] = useState(false)
-
-  const [invalid, setInvalid] = useState(false)
+  const [curToken, setCurToken] = useState(null)
 
   const getMoreTokens = async () => {
     const newTokens = filteredTokens.slice(shownTokens.length, shownTokens.length + 13)
@@ -239,9 +239,9 @@ export default function Explorer({ _address, _showntokens, _filters, _options })
 
   const showMobileFilterMenu = () => {
     return (
-      <div className={`grid grid-cols-1 bg-white place-items-end h-screen w-full fixed z-[70] pointer transition-all duration-500 ${showMobileFilter ? 'visible bg-opacity-50 opacity-100' : 'invisible opacity-0'} `}>
+      <div className={`grid grid-cols-1 bg-white-100 place-items-end h-screen w-full fixed z-[70] pointer transition-all duration-500 ${showMobileFilter ? 'visible bg-opacity-50 opacity-100' : 'invisible opacity-0'} `}>
         <div className='w-full h-full col-start-1 col-end-2 row-start-1 row-end-2' onClick={() => setShowMobileFilter(!showMobileFilter)} ></div>
-        <div className={`bg-blood-red p-3 h-full overflow-hidden flex flex-col col-start-1 col-end-2 row-start-1 row-end-2 transition-all duration-500 ${showMobileFilter ? 'min-w-[30px] max-w-[320px] w-[100vw] sm:max-w-[100vw] sm:w-[70vw] md:w-[50%] bg-opacity-80 opacity-100' : 'opacity-0 w-0 max-w-0'}`}>
+        <div className={`bg-eerie-black p-3 h-full overflow-hidden flex flex-col col-start-1 col-end-2 row-start-1 row-end-2 transition-all duration-500 ${showMobileFilter ? 'min-w-[30px] max-w-[320px] w-[100vw] sm:max-w-[100vw] sm:w-[70vw] md:w-[50%] bg-opacity-80 opacity-100' : 'opacity-0 w-0 max-w-0'}`}>
           <div className="flex justify-between border-b-[1px] mb-2 pb-2 border-white-30">
             <h3 className="text-xl font-roboto-condensed text-white-75">Filters</h3>
             <button className="text-white-50 w-10 h-10 focus:outline-none absolute z-30 top-0 right-0 m-1" onClick={() => setShowMobileFilter(!showMobileFilter)}>
@@ -261,12 +261,12 @@ export default function Explorer({ _address, _showntokens, _filters, _options })
 
   return (
     <>
-      <div className="flex h-screen w-[full] pt-[35px] mx-auto justify-center items-left font-roboto uppercase text-white-90">
-        <div className="grid w-[90%] pt-[50px] md:pt-[50px] content-start">
+      <div className="flex h-screen w-[full] mx-auto justify-center items-left font-roboto uppercase text-white-90">
+        <div className="grid w-[90%] pt-[40px] content-start">
           <div className="flex justify-between items-center overflow-hidden mb-3">
             <h3 className="font-roboto-condensed font-bold text-white lg:block hidden lg:text-3xl">Filters</h3>
             <div className="flex justify-between w-full lg:justify-end">
-              <h3 className="font-roboto font-bold text-white text-3xl lg:text-4xl">{`ORE-MOB | `}<span className="text-crimson" >{filteredTokens.length}</span></h3>
+              <h3 className="font-roboto font-bold text-white md:text-3xl lg:text-4xl text-[0px] md:block">{`ORE-MOB `}<span className="text-crimson text-3xl" >{`| ${filteredTokens.length}`}</span></h3>
               <div className="flex">
                 <button title="Reset filters" className="flex items-center p-2 w-10 h-10 focus:outline-none" onClick={() => resetFilter()}>
                   <div className="w-8 h-8 relative">
@@ -308,7 +308,7 @@ export default function Explorer({ _address, _showntokens, _filters, _options })
                     (shownTokens != [])
                       ?
                       shownTokens.map(token => {
-                        return <Card key={token.name} token={token} setShowModal={setShowModal} />
+                        return <Card key={token.name} token={token} setShowModal={setShowModal} setCurToken={setCurToken} />
                       })
                       :
                       <></>
@@ -318,7 +318,7 @@ export default function Explorer({ _address, _showntokens, _filters, _options })
             </div>
           </div>
         </div>
-        {/* <TokenModal className="z-[30]" showModal={showModal} setShowModal={setShowModal} /> */}
+        <Modal className="z-[30]" showModal={showModal} setShowModal={setShowModal} curToken={curToken}/>
         {showMobileFilterMenu()}
       </div>
     </>
