@@ -10,7 +10,7 @@ export default function Navbar() {
   }
 
   return (
-    <div className="fixed inset-x-0 top-0 flex flex-row justify-center content-center items-center z-[30] bg-transparent m-auto w-[90%] mt-10 med:mx-20">
+    <div className="fixed inset-x-0 top-0 flex justify-center z-[30] bg-transparent m-auto border-2 mt-10 med:mx-20">
       <div className="flex flex-col opacity-100 text-sm font-outfit cursor-pointer" onClick={() => setOpen(false)}>
         <Link href="/">
           <div className="flex justify-center items-center">

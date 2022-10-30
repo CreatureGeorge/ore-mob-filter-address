@@ -20,7 +20,6 @@ export default function Modal({ curToken, showModal, setShowModal }) {
       async () => {
         if (showModal) {
           await setToken(curToken)
-          console.log(curToken)
           const CID = curToken.image.substring(7)
           const imgPath = `https://u25.mypinata.cloud/ipfs/${CID}`
 
