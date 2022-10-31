@@ -70,7 +70,7 @@ export default function Explorer({ _address, _showntokens, _filters, _options })
   const [showModal, setShowModal] = useState(false)
   const [curToken, setCurToken] = useState(null)
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   const getMoreTokens = async () => {
     const newTokens = filteredTokens.slice(shownTokens.length, shownTokens.length + 13)
