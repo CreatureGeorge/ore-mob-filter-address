@@ -248,7 +248,7 @@ export default function Explorer({ _address, _showntokens, _filters, _options })
     return (
       <div className={`grid grid-cols-1 bg-white-100 place-items-end h-screen w-full fixed z-[70] pointer transition-all duration-500 ${showMobileFilter ? 'visible bg-opacity-50 opacity-100' : 'invisible opacity-0'} `}>
         <div className='w-full h-full col-start-1 col-end-2 row-start-1 row-end-2' onClick={() => setShowMobileFilter(!showMobileFilter)} ></div>
-        <div className={`bg-eerie-black p-3 h-full overflow-hidden flex flex-col col-start-1 col-end-2 row-start-1 row-end-2 transition-all duration-500 ${showMobileFilter ? 'min-w-[30px] max-w-[320px] w-[100vw] sm:max-w-[100vw] sm:w-[70vw] md:w-[50%] bg-opacity-80 opacity-100' : 'opacity-0 w-0 max-w-0'}`}>
+        <div className={`bg-eerie-black p-3 h-full overflow-hidden flex flex-col col-start-1 col-end-2 row-start-1 row-end-2 transition-all duration-500 min-w-[30px] max-w-[320px] w-[100vw] sm:max-w-[100vw] sm:w-[70vw] md:w-[50%] ${showMobileFilter ? ' bg-opacity-80 opacity-100 translate-x-0' : 'opacity-0 translate-x-full'}`}>
           <div className="flex justify-between border-b-[1px] mb-2 pb-2 border-white-30">
             <h3 className="text-xl font-roboto-condensed text-white-75">Filters</h3>
             <button className="text-white-50 w-10 h-10 focus:outline-none absolute z-30 top-0 right-0 m-1" onClick={() => setShowMobileFilter(!showMobileFilter)}>

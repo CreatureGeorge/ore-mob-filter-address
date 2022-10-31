@@ -9,7 +9,7 @@ const handlePolicyID = `f0ff48bbb7bbe9d59a40f1ce90e9e9d0ff5002ec48f232b49ca0fb9a
 export default async function handler(req, res) {
   const address = req.query.id
   const accountTokens = await grabAccountTokenByPolicy(policyID, address)
-
+  
   if (accountTokens.length > 0) {
     let metadata = _tokens[policyID]
 
@@ -54,6 +54,8 @@ const validateStakeAddress = async (address) => {
   if (address[0] == '$') {
     let handle = utf8ToHex(address.substring(1))
     let assetAddr = await grabAssetAddress(`${handlePolicyID}${handle}`)
+    if (!assetAddr) return false
+
     address = assetAddr[0].address
   }
   let stakeAddr = returnStakeAddressFromBech32(address)
@@ -64,9 +66,7 @@ const validateStakeAddress = async (address) => {
 
 const grabAccountTokenByPolicy = async (policyID, address) => {
   let stakeAddr = await validateStakeAddress(address)
-
   if (stakeAddr != false) {
-    console.log(stakeAddr)
     let assets = []
 
     let page = 1
@@ -87,5 +87,6 @@ const grabAccountTokenByPolicy = async (policyID, address) => {
     return assets
   } else {
     console.log('invalid stake address!')
+    return []
   }
 }
