@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -14,7 +15,7 @@ export default function Navbar() {
       <div className="flex flex-col opacity-100 text-sm font-outfit cursor-pointer" onClick={() => setOpen(false)}>
         <Link href="/">
           <div className="flex justify-center items-center">
-            <img className="h-10" src={`/images/red-spider-lily.png`} alt="odachi" />
+            <Image className="h-10" src={`/images/red-spider-lily.png`} alt="odachi" />
             <p className="text-white-90 tracking-widest text-2xl">HOME</p>
           </div>
         </Link>
