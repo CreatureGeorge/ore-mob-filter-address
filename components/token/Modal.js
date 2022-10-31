@@ -6,6 +6,7 @@ import cnftjungleIcon from "../../public/images/links/cnftjungle.png"
 import externalIcon from "../../public/images/icons/external.png"
 
 import Image from "next/image";
+import { utf8ToHex } from "../../lib/base";
 
 const policyID = `062b1da3d344c1e6208ef908b2d308201e7ff6bcfddf0f606249817f`
 
@@ -57,8 +58,7 @@ const resetModal = async () => {
   setTimeout(() => { setImgPath("") }, 500)
 }
 
-const convert = (from, to) => str => Buffer.from(str, from).toString(to)
-const utf8ToHex = convert('utf8', 'hex')
+
 
 const modalDescription = () => {
   if (token == null) { return <></> }
