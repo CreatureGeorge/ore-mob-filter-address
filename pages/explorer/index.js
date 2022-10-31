@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import Image from "next/image";
-import { getHolders, getTokens, returnStakeAddressFromBech32 } from "../../lib/base";
+import { getTokens, returnStakeAddressFromBech32 } from "../../lib/base";
 import { useRouter } from "next/router";
 
 import filterImg from "../../public/images/icons/filter.png"
@@ -14,6 +14,7 @@ import Filters from "../../components/filters/Filters";
 import Modal from "../../components/token/Modal";
 import Link from "next/link";
 import Head from "next/head";
+import Loading from "../../components/Loading";
 
 const policyID = `062b1da3d344c1e6208ef908b2d308201e7ff6bcfddf0f606249817f`
 
@@ -69,7 +70,7 @@ export default function Explorer({ _address, _showntokens, _filters, _options })
   const [showModal, setShowModal] = useState(false)
   const [curToken, setCurToken] = useState(null)
 
-  const [invalid, setInvalid] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const getMoreTokens = async () => {
     const newTokens = filteredTokens.slice(shownTokens.length, shownTokens.length + 13)
@@ -83,21 +84,20 @@ export default function Explorer({ _address, _showntokens, _filters, _options })
 
         if (!router.query.address) {
           router.push('/')
-          setInvalid(true)
         } else {
+          await setLoading(true)
           let address = await returnStakeAddressFromBech32(router.query.address)
 
           const tokens = await getTokens(address)
 
           if (tokens == 'invalid-address') {
             router.push('/')
-            setInvalid(true)
             return
           }
 
-          setAllTokens(tokens)
-          setFilteredTokens(tokens)
-          setShownTokens(tokens.slice(0, 48))
+          await setAllTokens(tokens)
+          await setFilteredTokens(tokens)
+          await setShownTokens(tokens.slice(0, 48))
 
           let options = {}
           let filters = { name: "" }
@@ -112,8 +112,12 @@ export default function Explorer({ _address, _showntokens, _filters, _options })
             filters[key] = []
           })
 
-          setFilters(filters)
-          setFilterOptions(options)
+          await setFilters(filters)
+          await setFilterOptions(options)
+
+          setTimeout(() => {
+            setLoading(false)
+          }, 1250);
         }
       }
     )()
@@ -271,25 +275,22 @@ export default function Explorer({ _address, _showntokens, _filters, _options })
         <link rel="icon" href="/images/red-spider-lily.ico" />
       </Head>
       <div className="flex h-screen w-[full] mx-auto justify-center items-left font-roboto uppercase text-white-90">
-        <div className="grid w-[90%] pt-[40px] content-start">
+        <div className="grid mx-[5%] pt-[40px] content-start">
           <div className="flex justify-between items-center overflow-hidden mb-3">
             <h3 className="font-roboto-condensed font-bold text-white lg:block hidden lg:text-3xl">Filters</h3>
             <div className="flex justify-between w-full lg:justify-end">
-              <Link href="/">
-                <div className="flex justify-center items-center mr-20">
-                  <img className="h-10" src={`/images/red-spider-lily.png`} alt="odachi" />
-                  <p className="text-white-90 tracking-widest text-md sm:text-2xl">HOME</p>
-                </div>
+              <Link className="flex items-center" href="/">
+                  <p className="text-white-90 tracking-widest text-md sm:text-2xl mr-20 text-red-500">return home</p>
               </Link>
               <h3 className="font-roboto font-bold text-white sm:text-3xl lg:text-4xl text-[0px] md:block">{`ORE-MOB | `}<span className="text-crimson text-3xl" >{`${filteredTokens.length}`}</span></h3>
-              <div className="flex">
+              <div className="flex ml-2">
                 <button title="Reset filters" className="flex items-center p-2 w-10 h-10 focus:outline-none" onClick={() => resetFilter()}>
-                  <div className="w-8 h-8 relative">
+                  <div className="w-8 h-8 relative items-center flex">
                     <Image src={resetImg} alt="reset filters" />
                   </div>
                 </button>
                 <button title="Filters" className="flex items-center p-2 w-10 h-10 focus:outline-none lg:hidden" onClick={() => setShowMobileFilter(!showMobileFilter)}>
-                  <div className="w-8 h-8 relative">
+                  <div className="w-8 h-8 relative items-center flex">
                     <Image src={filterImg} alt="filter" />
                   </div>
                 </button>
@@ -335,6 +336,7 @@ export default function Explorer({ _address, _showntokens, _filters, _options })
         </div>
         <Modal className="z-[30]" showModal={showModal} setShowModal={setShowModal} curToken={curToken} />
         {showMobileFilterMenu()}
+        <Loading loading={loading}/>
       </div>
     </>
   )
