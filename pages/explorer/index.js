@@ -85,7 +85,6 @@ export default function Explorer({ _address, _showntokens, _filters, _options })
         if (!router.query.address) {
           router.push('/')
         } else {
-          await setLoading(true)
           let address = await returnStakeAddressFromBech32(router.query.address)
 
           const tokens = await getTokens(address)
