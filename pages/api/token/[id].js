@@ -1,5 +1,4 @@
 import _tokens from "../../../lib/metadata.json"
-import _holders from "../../../lib/holders.json"
 import { hexToUtf8, returnStakeAddressFromBech32, utf8ToHex } from "../../../lib/base"
 import { grabAssetAddress, grabAccountInfo, grabAllAssetsFromStake } from "../../../external/blockfrost"
 
