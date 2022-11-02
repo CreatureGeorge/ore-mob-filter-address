@@ -165,7 +165,7 @@ export default function Modal({ curToken, showModal, setShowModal }) {
   const mobileModal = () => {
     return (
       <div className={`grid bg-eerie-black w-[95%] sm:w-[85%] md:w-[75%] z-100 rounded-xl items-center justify-center overflow-hidden lg:hidden  col-start-1 col-end-2 row-start-1 row-end-2`}>
-        <div className="grid inset-0 h-full object-contain col-start-1 col-end-2 row-start-1 row-end-2 relative">
+        <div className="grid inset-0 h-full object-contain col-start-1 col-end-2 row-start-1 row-end-2 relative z-10 " onClick={resetModal}>
           <img src={`/images/0000.jpg`} fill="true" alt="goerge" className="object-contain col-start-1 col-end-2 row-start-1 row-end-2 opacity-0 z-0" />
           <img src={imgPath} fill="true" className="object-contain col-start-1 col-end-2 row-start-1 row-end-2 z-10" alt={`token image`} />
           <div className="col-start-1 col-end-2 row-start-1 row-end-2 text-black m-2 place-items-center grid z-0">
@@ -175,16 +175,10 @@ export default function Modal({ curToken, showModal, setShowModal }) {
             </svg>
           </div>
         </div>
-        <div className="grid overflow-hidden col-start-1 col-end-2 row-start-1 row-end-2 aspect-square z-20 relative h-full">
-          <div className={`overflow-hidden p-2 sm:p-5 transition-all duration-500 ease-in-out ${showInfo ? "opacity-100 bg-white-50" : "opacity-0 lg:opacity-100"}`}>
+        <div className="grid overflow-hidden col-start-1 col-end-2 row-start-1 row-end-2 aspect-square relative h-full">
+          <div className={`overflow-hidden p-2 sm:p-5 transition-all duration-500 ease-in-out ${showInfo ? "opacity-100 bg-white-50 z-20" : "opacity-0 z-0"}`}>
             {modalDescription()}
           </div>
-          <button className="text-white-50 w-10 h-10 focus:outline-none absolute z-30 top-0 right-0" onClick={resetModal}>
-            <div className="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <span aria-hidden="true" className={"block absolute h-0.5 w-5 bg-current rotate-45"}></span>
-              <span aria-hidden="true" className={"block absolute h-0.5 w-5 bg-current -rotate-45"}></span>
-            </div>
-          </button>
         </div>
         <div className="bg-white-90 p-2 sm:py-5 flex">
           <button className="bg-chinese-black-25 rounded-full p-1 mr-5 focus:outline-none z-30 " onClick={() => { setShowInfo(!showInfo) }}>

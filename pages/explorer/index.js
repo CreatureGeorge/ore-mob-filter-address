@@ -94,9 +94,9 @@ export default function Explorer({ _address, _showntokens, _filters, _options })
             return
           }
 
-          await setAllTokens(tokens)
-          await setFilteredTokens(tokens)
-          await setShownTokens(tokens.slice(0, 48))
+          setAllTokens(tokens)
+          setFilteredTokens(tokens)
+          setShownTokens(tokens.slice(0, 48))
 
           let options = {}
           let filters = { name: "" }
@@ -111,8 +111,10 @@ export default function Explorer({ _address, _showntokens, _filters, _options })
             filters[key] = []
           })
 
-          await setFilters(filters)
-          await setFilterOptions(options)
+          setFilters(filters)
+          setFilterOptions(options)
+
+          setHasMore(tokens.length > 48 ? true : false)
 
           setTimeout(() => {
             setLoading(false)
