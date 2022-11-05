@@ -273,7 +273,7 @@ export default function Explorer({ _address, _showntokens, _filters, _options })
      <Head>
         <title>Ore Explorer - Address - by Odachi</title>
         <meta name="description" content="Address filter for Ore-mob" />
-        <link rel="icon" href="/images/red-spider-lily.ico" />
+        <link rel="icon" href="/higanbana.ico" />
       </Head>
       <div className="flex h-screen w-[full] mx-auto justify-center items-left font-roboto uppercase text-white-90">
         <div className="grid mx-[5%] pt-[40px] content-start">
