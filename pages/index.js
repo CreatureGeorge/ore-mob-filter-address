@@ -10,13 +10,13 @@ export default function Home() {
       <Head>
         <title>Ore Explorer - Address - by Odachi</title>
         <meta name="description" content="Address filter for Ore-mob" />
-        <link rel="icon" href="/images/red-spider-lily.ico" />
+        <link rel="icon" href="/higanbana.ico" />
       </Head>
 
       <main className={`flex flex-col min-h-screen justify-center items-center relative`}>
         <AddressSearchBar placeholder={`please search a valid address . . .`} setAddress={setAddress} />
-        <div className="animate-pulse absolute z-0">
-          <img fill="true" src={`/images/red-spider-lily.png`} alt="odachi" />
+        <div className="absolute z-0 opacity-50">
+          <img fill="true" src={`/higanbana.gif`} alt="odachi" />
         </div>
       </main>
     </div>
