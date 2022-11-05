@@ -2,7 +2,7 @@ export default function Card({ token, setShowModal, setCurToken }) {
   //const router = useRouter();
 
   const tokenNumber = token.name.substring(6)
-  const imgPath = `https://oremob.io/all-cards/ap/${tokenNumber.toString().padStart(4, '0')}.jpg`
+  const imgPath = `https://oremob.io/all-cards/pfps/${tokenNumber.toString().padStart(4, '0')}.jpg`
 
   const podClick = async () => {
     // await router.push(`/pods/?id=${token[0]}`,`/pods/?id=${token[0]}`,{shallow: true})
