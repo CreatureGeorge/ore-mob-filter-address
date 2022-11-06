@@ -163,13 +163,12 @@ export default function Modal({ curToken, showModal, setShowModal }) {
 
   const mobileModal = () => {
     return (
-      <div className={`grid bg-eerie-black w-[95%] sm:w-[85%] md:w-[75%] z-100 rounded-xl items-center justify-center overflow-hidden lg:hidden  col-start-1 col-end-2 row-start-1 row-end-2`}>
-        <div className="grid inset-0 h-full object-contain col-start-1 col-end-2 row-start-1 row-end-2 relative z-10 " onClick={resetModal}>
-          <Image src={`/images/0000.jpg`} fill="true" alt="goerge" className="object-contain col-start-1 col-end-2 row-start-1 row-end-2 opacity-0 z-0" />
+      <div className={`grid bg-eerie-black w-[95%] sm:w-[85%] md:w-[75%] z-100 rounded-xl items-center overflow-hidden lg:hidden col-start-1 col-end-2 row-start-1 row-end-2`}>
+        <div className="grid h-full w-full object-contain col-start-1 col-end-2 row-start-1 row-end-2 relative z-10" onClick={resetModal}>
           <img src={imgPath} fill="true" className="object-contain col-start-1 col-end-2 row-start-1 row-end-2 z-10" alt={`token image`} />
           <div className="col-start-1 col-end-2 row-start-1 row-end-2 place-items-center grid z-0">
             <div className="m-2 place-items-center relative min-w-10 w-[14vw] animate-spin grid z-0 opacity-50">
-              <img fill="true" src={`/higanbana.svg`} alt="odachi" />
+              <img fill="true" src={`/higanbana.svg`} alt="higanbana" />
             </div>
           </div>
         </div>
