@@ -30,7 +30,7 @@ export default function Filter({ filters, setFilters, option, options }) {
   }, [searchOption])
 
   return (
-    <div className="text-white uppercase overflow-hidden pb-2">
+    <div className="text-white uppercase overflow-y-auto pb-2">
       <div onClick={() => setShow(!show)} className="flex hover:cursor-pointer items-center border-b-[1px] border-dashed py-0 w-full uppercase text-xs md:text-base font-roboto-condensed z-10">
         <p className={`transition-all duration-500 ease-in-out z-10 w-full text-white-75 ${(!show) ? "font-normal" : "font-bold"}`}>{option}</p>
         <div className="text-white-50 w-10 h-10 focus:outline-none z-30 relative">
@@ -40,7 +40,7 @@ export default function Filter({ filters, setFilters, option, options }) {
             </div>
           </div>
       </div>
-      <div className={`rounded-l-xl scrollbar-thin scrollbar-thumb-white-30 scrollbar-track-white-20 scrollbar-thumb-rounded-full scrollbar-track-rounded-full text-xs bg-chinese-black-25 p-1 text-white-75 z-0 transition-all duration-500 ease-in-out ${(!show) ? 'invisible opacity-0 -translate-y-10 h-0' : 'visible opacity-100 translate-y-0 h-auto max-h-[400px] mt-2 '}`}>
+      <div className={`rounded-l-xl scrollbar-thin scrollbar-thumb-white-30 scrollbar-track-white-20 scrollbar-thumb-rounded-full scrollbar-track-rounded-full text-xs p-1 text-white-75 z-0 transition-all duration-500 ease-in-out ${(!show) ? 'invisible opacity-0 -translate-y-10 h-0' : 'visible opacity-100 translate-y-0 h-auto max-h-[400px] mt-2 '}`}>
         <SearchBar placeholder={`Search for specific ${option} . . .`} setFilters={setSearchOption}/>
         {
           filteredOptions.map(curOption => {

@@ -3,7 +3,7 @@ import Filter from "./Filter"
 
 export default function Filters({ filters, setFilters, filterOptions }) {
   return (
-    <div className="flex flex-col overflow-hidden h-full w-full ">
+    <div className="flex flex-col  overflow-y-auto h-full w-full ">
       <SearchBar placeholder={`Search by serial . . .`} filters={filters} setFilters={setFilters} ></SearchBar>
       <div className="scrollbar-thin scrollbar-thumb-white-0 scrollbar-track-white-0 scrollbar-thumb-rounded-full scrollbar-track-rounded-full w-full h-full ">
         {

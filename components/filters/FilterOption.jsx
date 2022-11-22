@@ -35,7 +35,7 @@ export default function FilterOption({ filters, setFilters, option, curOption })
   }
 
   return (
-    <div className="flex pb-2 cursor-pointer" onClick={() => modifySelectedOptionFilter(curOption.description)} >
+    <div className="flex pb-2 cursor-pointer bg-chinese-black-25" onClick={() => modifySelectedOptionFilter(curOption.description)} >
       <div className={`h-5 w-5 border-[1px] border-white-50 mr-3 rounded-lg transition-all duration-500 ease-in-out bg-filter-accent ${selected ? "bg-opacity-75" : "bg-opacity-0"}`}></div>
       <button >
         <p className="text-roboto-condensed uppercase">{curOption.description} <span className="text-white-50 text-roboto">({curOption.count})</span></p>
